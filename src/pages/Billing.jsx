@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSpaces } from '../features/spaces/spaceSlice';
 import { createBookingBatch, getBookings, updateBookingPayment, reset } from '../features/bookings/bookingSlice';
@@ -15,6 +16,7 @@ const SLOT_TIMES = [
 
 const Billing = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const { spaces } = useSelector(state => state.spaces);
     const { bookings, isSuccess, isError, message } = useSelector(state => state.bookings);
 
@@ -130,7 +132,12 @@ const Billing = () => {
             paymentDetails: paymentMode === 'Split' ? splitDetails : null,
             paidAmount: Number(paidAmount) || 0,
             discount
-        })).unwrap().then(() => toast.success("Billed Successfully"));
+        })).unwrap().then((data) => {
+            toast.success("Billed Successfully");
+            if (data && data.length > 0) {
+                navigate(`/print/${data[0]._id}`);
+            }
+        });
     };
 
     // Settle Handlers

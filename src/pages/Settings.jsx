@@ -11,6 +11,8 @@ const Settings = () => {
         name: user?.name || '',
         email: user?.email || '',
         turfName: user?.turfName || '',
+        address: user?.address || '',
+        phone: user?.phone || '',
         password: '',
         emailUser: user?.emailConfig?.user || '',
         emailPass: user?.emailConfig?.pass || '',
@@ -26,6 +28,8 @@ const Settings = () => {
             name: form.name,
             email: form.email,
             turfName: form.turfName,
+            address: form.address,
+            phone: form.phone,
             emailConfig: {
                 user: form.emailUser,
                 pass: form.emailPass
@@ -59,11 +63,19 @@ const Settings = () => {
                         </div>
                         <div>
                             <label className="block text-sm font-medium text-gray-700">Email (Login)</label>
-                            <input type="email" name="email" value={form.email} onChange={handleChange} className="w-full border p-2 rounded mt-1" />
+                            <input type="email" name="email" value={form.email} onChange={handleChange} className="w-full border p-2 rounded mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
                         </div>
                         <div>
+                            <label className="block text-sm font-medium text-gray-700">Phone Number</label>
+                            <input type="text" name="phone" value={form.phone} onChange={handleChange} className="w-full border p-2 rounded mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
+                        </div>
+                        <div className="md:col-span-2">
+                            <label className="block text-sm font-medium text-gray-700">Business Address</label>
+                            <input type="text" name="address" value={form.address} onChange={handleChange} placeholder="123 Street, City, Country" className="w-full border p-2 rounded mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
+                        </div>
+                        <div className="md:col-span-2">
                             <label className="block text-sm font-medium text-gray-700">New Password (Optional)</label>
-                            <input type="password" name="password" value={form.password} onChange={handleChange} placeholder="Leave blank to keep current" className="w-full border p-2 rounded mt-1" />
+                            <input type="password" name="password" value={form.password} onChange={handleChange} placeholder="Leave blank to keep current" className="w-full border p-2 rounded mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500" />
                         </div>
                     </div>
 

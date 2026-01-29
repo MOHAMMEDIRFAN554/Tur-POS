@@ -10,6 +10,7 @@ import Spaces from './pages/Spaces';
 import Expenses from './pages/Expenses';
 import Reports from './pages/Reports';
 import Settings from './pages/Settings';
+import PrintBill from './pages/PrintBill';
 import Layout from './components/Layout';
 
 function PrivateRoute({ children }) {
@@ -71,6 +72,11 @@ function App() {
               <Layout>
                 <Settings />
               </Layout>
+            </PrivateRoute>
+          } />
+          <Route path="/print/:id" element={
+            <PrivateRoute>
+              <PrintBill />
             </PrivateRoute>
           } />
         </Routes>

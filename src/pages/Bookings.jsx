@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getBookings, createBookingBatch } from '../features/bookings/bookingSlice';
 import { getSpaces } from '../features/spaces/spaceSlice';
@@ -17,6 +18,7 @@ const SLOT_TIMES = [
 
 const Bookings = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const { user } = useSelector(state => state.auth);
     const { spaces } = useSelector(state => state.spaces);
     const { bookings, isSuccess, isLoading } = useSelector(state => state.bookings);
@@ -150,7 +152,7 @@ const Bookings = () => {
     const [invoiceModal, setInvoiceModal] = useState({ show: false, booking: null });
 
     const handleInvoiceClick = (booking) => {
-        setInvoiceModal({ show: true, booking });
+        navigate(`/print/${booking._id}`);
     };
 
     const handleDownloadInvoice = (type) => {
