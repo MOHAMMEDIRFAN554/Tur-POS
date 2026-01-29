@@ -23,7 +23,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/newac" element={<Register />} />
           <Route path="/" element={
             <PrivateRoute>
               <Layout>

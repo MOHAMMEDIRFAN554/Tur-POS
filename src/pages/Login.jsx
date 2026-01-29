@@ -123,10 +123,8 @@ const Login = () => {
 
                     <div className="mt-6 text-center">
                         <p className="text-sm text-gray-600">
-                            Don't have an account?{' '}
-                            <Link to="/register" className="font-bold text-indigo-600 hover:text-indigo-500 transition-colors">
-                                Create Free Account
-                            </Link>
+                            Don't have an account? Contact your administrator.
+                           
                         </p>
                     </div>
                 </div>
