@@ -15,7 +15,7 @@ const Settings = () => {
         phone: user?.phone || '',
         password: '',
         emailUser: user?.emailConfig?.user || '',
-        emailPass: user?.emailConfig?.pass || '',
+        emailPass: '', // Keep empty unless changing
     });
 
     const handleChange = (e) => {
@@ -31,17 +31,22 @@ const Settings = () => {
             address: form.address,
             phone: form.phone,
             emailConfig: {
-                user: form.emailUser,
-                pass: form.emailPass
+                user: form.emailUser
             }
         };
+
+        if (form.emailPass) {
+            payload.emailConfig.pass = form.emailPass;
+        }
+
         if (form.password) payload.password = form.password;
 
         const result = await dispatch(updateProfile(payload));
         if (!result.error) {
             toast.success("Profile Updated");
+            setForm(prev => ({ ...prev, password: '', emailPass: '' }));
         } else {
-            toast.error(result.payload);
+            toast.error(result.payload || "Update failed");
         }
     };
 
