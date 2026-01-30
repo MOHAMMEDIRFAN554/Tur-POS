@@ -34,10 +34,8 @@ const Layout = ({ children }) => {
                     <div className="w-8"></div> {/* Spacer */}
                 </div>
 
-                {/* Main Header (Desktop) */}
-                <div className="hidden md:block">
-                    <Header />
-                </div>
+                {/* Main Header (Desktop and Mobile with toggle) */}
+                <Header setIsMobileMenuOpen={setIsMobileMenuOpen} isMobileMenuOpen={isMobileMenuOpen} />
 
                 {/* Scrollable Content */}
                 <main className="flex-1 overflow-y-auto overflow-x-hidden p-4 md:p-8 custom-scrollbar">

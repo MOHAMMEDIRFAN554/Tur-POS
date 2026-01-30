@@ -1,12 +1,19 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Search, Bell, UserCircle } from 'lucide-react';
+import { Search, Bell, UserCircle, Menu } from 'lucide-react';
 
-const Header = () => {
+const Header = ({ setIsMobileMenuOpen }) => {
     const { user } = useSelector((state) => state.auth);
 
     return (
         <header className="flex justify-between items-center h-20 px-8 bg-white border-b border-gray-100 sticky top-0 z-30">
+            {/* Mobile Menu Toggle */}
+            <div className="md:hidden flex items-center">
+                <button onClick={() => setIsMobileMenuOpen(true)} className="p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+                    <Menu size={24} />
+                </button>
+            </div>
+
             {/* Search Bar - Aesthetic Only for now */}
             <div className="hidden md:flex items-center w-96 relative">
                 <Search className="absolute left-3 text-gray-400" size={18} />
