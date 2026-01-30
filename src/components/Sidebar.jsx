@@ -4,7 +4,7 @@ import { LayoutDashboard, Calendar, Layers, DollarSign, PieChart, Settings, LogO
 import { useDispatch } from 'react-redux';
 import { logout, reset } from '../features/auth/authSlice';
 
-const Sidebar = () => {
+const Sidebar = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
     const location = useLocation();
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -26,7 +26,10 @@ const Sidebar = () => {
     ];
 
     return (
-        <aside className="hidden md:flex flex-col w-72 bg-[#0f172a] text-gray-300 h-screen border-r border-gray-800 transition-all duration-300 ease-in-out">
+        <aside className={`${
+            isMobileMenuOpen ? "translate-x-0 ease-out" : "-translate-x-full ease-in"
+        } fixed inset-y-0 left-0 z-50 w-72 bg-[#0f172a] text-gray-300 h-screen border-r border-gray-800 md:relative md:translate-x-0 transition-all duration-300`}
+        >
             {/* Branding */}
             <div className="flex items-center gap-3 px-6 h-20 border-b border-gray-800/50">
                 <div className="p-2 bg-indigo-600 rounded-xl shadow-lg shadow-indigo-900/20">
@@ -48,6 +51,7 @@ const Sidebar = () => {
                         <Link
                             key={link.name}
                             to={link.path}
+                            onClick={() => setIsMobileMenuOpen(false)} // Close sidebar on link click
                             className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 group
                                 ${isActive
                                     ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-900/30 font-medium'

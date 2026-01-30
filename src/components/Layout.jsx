@@ -10,14 +10,15 @@ const Layout = ({ children }) => {
         <div className="flex h-screen bg-gray-50 overflow-hidden font-sans">
             {/* Desktop Sidebar */}
             <div className="hidden md:block">
-                <Sidebar />
+                <Sidebar isMobileMenuOpen={isMobileMenuOpen} setIsMobileMenuOpen={setIsMobileMenuOpen} />
             </div>
 
             {/* Mobile Sidebar (Overlay) */}
             {isMobileMenuOpen && (
-                <div className="fixed inset-0 z-50 md:hidden">
-                    <div className="absolute inset-0 bg-gray-900/80 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)}></div>
-                    <div className="absolute left-0 top-0 h-full w-72 bg-[#0f172a] shadow-2xl animate-slide-in-left">
+                <div className="fixed inset-0 z-40" onClick={() => setIsMobileMenuOpen(false)}>
+                    <div className="absolute inset-0 bg-gray-900/80 backdrop-blur-sm"></div>
+                    <div className="absolute left-0 top-0 h-full w-72 shadow-2xl animate-slide-in-left" onClick={(e) => e.stopPropagation()}>
+                        <Sidebar isMobileMenuOpen={isMobileMenuOpen} setIsMobileMenuOpen={setIsMobileMenuOpen} />
                         <Sidebar />
                     </div>
                 </div>
