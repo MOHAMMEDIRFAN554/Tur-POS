@@ -25,15 +25,6 @@ const Layout = ({ children }) => {
 
             {/* Main Content Area */}
             <div className="relative flex flex-col flex-1 h-full overflow-hidden">
-                {/* Mobile Header Toggle */}
-                <div className="md:hidden flex items-center justify-between p-4 bg-white border-b border-gray-100">
-                    <button onClick={() => setIsMobileMenuOpen(true)} className="p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
-                        <Menu size={24} />
-                    </button>
-                    <span className="font-bold text-gray-900">Turf POS</span>
-                    <div className="w-8"></div> {/* Spacer */}
-                </div>
-
                 {/* Main Header (Desktop and Mobile with toggle) */}
                 <Header setIsMobileMenuOpen={setIsMobileMenuOpen} isMobileMenuOpen={isMobileMenuOpen} />
 

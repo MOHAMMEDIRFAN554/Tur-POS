@@ -7,14 +7,16 @@ const Header = ({ setIsMobileMenuOpen }) => {
 
     return (
         <header className="flex justify-between items-center h-20 px-8 bg-white border-b border-gray-100 sticky top-0 z-30">
-            {/* Mobile Menu Toggle */}
-            <div className="md:hidden flex items-center">
+            {/* Mobile Menu Toggle and Title */}
+            <div className="md:hidden flex items-center justify-between flex-1">
                 <button onClick={() => setIsMobileMenuOpen(true)} className="p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
                     <Menu size={24} />
                 </button>
+                <span className="font-bold text-gray-900">Turf POS</span>
+                <div className="w-8"></div> {/* Spacer to balance layout */}
             </div>
 
-            {/* Search Bar - Aesthetic Only for now */}
+            {/* Search Bar - Aesthetic Only for now (hidden on small screens) */}
             <div className="hidden md:flex items-center w-96 relative">
                 <Search className="absolute left-3 text-gray-400" size={18} />
                 <input
